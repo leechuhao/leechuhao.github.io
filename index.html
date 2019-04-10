@@ -303,17 +303,37 @@
             <p>IP+端口：127.0.0.1:8080<br>context-path: /gameshop</p>
 <p>test: ../hello</p>
 <h3 id="用户-user"><a href="#用户-user" class="headerlink" title="用户 /user"></a>用户 /user</h3><ul>
-<li><p>登录：<br>  url：/signin<br>  parameter: User<br>  response：User</p>
+<li><p>通过ID查找用户：<br>url：/id<br>parameter: user<br>response: user</p>
 </li>
-<li><p>注册：<br>  url: /signup<br>  parameter: User<br>  response：success</p>
+<li><p>通过用户名（nickname）查找用户：</p>
+<p>url: /name</p>
+<p>parameter: user</p>
+<p>response: user</p>
+</li>
+<li><p>注册：<br>url: /register<br>parameter: user<br>response：success</p>
+</li>
+<li><p>更新用户信息：</p>
+<p>url: /update</p>
+<p>parameter: user</p>
+<p>response: success</p>
 </li>
 </ul>
 <h3 id="游戏-game"><a href="#游戏-game" class="headerlink" title="游戏 /game"></a>游戏 /game</h3><ul>
-<li><p>获取所有游戏<br>  url: /listgame<br>  parameter；none<br>  response：games</p>
+<li><p>获取所有游戏<br>url: /listgame<br>parameter；none<br>response：games</p>
 </li>
-<li><p>游戏详细信息<br>  url: /detail<br>  parameter: Interger GID<br>  response：game</p>
+<li><p>游戏详细信息<br>url: /detail<br>parameter: Interger GID<br>response：game</p>
 </li>
-<li><p>获取某类型的所有游戏<br>  url: /type<br>  parameter: Interger type<br>  response：games</p>
+<li><p>获取某类型的所有游戏<br>url: /type<br>parameter: Interger type<br>response：games</p>
+</li>
+<li><p>添加游戏</p>
+<p>url: /add</p>
+<p>parameter: game</p>
+<p>response: success</p>
+</li>
+<li><p>更新游戏信息</p>
+<p>url: /update</p>
+<p>parameter: game</p>
+<p>response: success</p>
 </li>
 </ul>
 <p>游戏类型参考表：</p>
@@ -348,9 +368,26 @@
 </tbody>
 </table>
 <h3 id="库存-repository"><a href="#库存-repository" class="headerlink" title="库存 /repository"></a>库存 /repository</h3><ul>
-<li><p>查询用户的所有订单<br>  url: /repository<br>  parameter: Interger UID<br>  response：repositories</p>
+<li><p>查询用户的所有订单<br>url: /list<br>parameter: Interger UID<br>response：repositories</p>
 </li>
-<li><p>购买（添加订单，修改库存）<br>  url: /buy<br>  parameter: Game<br>  response：success</p>
+<li><p>查询库存</p>
+<p>url: /query</p>
+<p>parameter； Integer GID</p>
+<p>response: repositories</p>
+</li>
+<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Game<br>response：success</p>
+</li>
+<li><p>还原订单</p>
+<p>url: /remake</p>
+<p>parameter: Integer RID</p>
+<p>response: success</p>
+</li>
+<li><p>添加库存</p>
+<p>url: /add</p>
+<p>parameter: Repository</p>
+<p>response：success</p>
+</li>
+<li><p>发送邮件<br>url: /send<br>parameter: Integer RID<br>response：success</p>
 </li>
 </ul>
 <h3 id="错误返回"><a href="#错误返回" class="headerlink" title="错误返回"></a>错误返回</h3><p>response：<br>    success: false<br>    message: Exception</p>
