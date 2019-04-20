@@ -229,10 +229,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/毕业设计API/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/数据结构/树状数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李楚豪">
+      <meta itemprop="name" content="李楚豪的博客">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/27/毕业设计API/" itemprop="url">毕业设计API</a></h1>
+                <a class="post-title-link" href="/2019/04/21/数据结构/树状数组/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T10:16:00+08:00">
-                2019-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
               </time>
             
 
@@ -300,97 +300,12 @@
       
         
           
-            <p>IP+端口：127.0.0.1:8080<br>context-path: /gameshop</p>
-<p>test: ../hello</p>
-<h3 id="用户-user"><a href="#用户-user" class="headerlink" title="用户 /user"></a>用户 /user</h3><ul>
-<li><p>通过ID查找用户：<br>url：/id<br>parameter: user<br>response: user</p>
-</li>
-<li><p>通过用户名（nickname）查找用户：</p>
-<p>url: /name</p>
-<p>parameter: user</p>
-<p>response: user</p>
-</li>
-<li><p>注册：<br>url: /register<br>parameter: user<br>response：success</p>
-</li>
-<li><p>更新用户信息：</p>
-<p>url: /update</p>
-<p>parameter: user</p>
-<p>response: success</p>
-</li>
-</ul>
-<h3 id="游戏-game"><a href="#游戏-game" class="headerlink" title="游戏 /game"></a>游戏 /game</h3><ul>
-<li><p>获取所有游戏<br>url: /listgame<br>parameter；none<br>response：games</p>
-</li>
-<li><p>游戏详细信息<br>url: /detail<br>parameter: Interger GID<br>response：game</p>
-</li>
-<li><p>获取某类型的所有游戏<br>url: /type<br>parameter: Interger type<br>response：games</p>
-</li>
-<li><p>添加游戏</p>
-<p>url: /add</p>
-<p>parameter: game</p>
-<p>response: success</p>
-</li>
-<li><p>更新游戏信息</p>
-<p>url: /update</p>
-<p>parameter: game</p>
-<p>response: success</p>
-</li>
-</ul>
-<p>游戏类型参考表：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">数值</th>
-<th style="text-align:center">游戏类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">其他类</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">FPS类</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">棋牌类</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">赛车类</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">动作类</td>
-</tr>
-</tbody>
-</table>
-<h3 id="库存-repository"><a href="#库存-repository" class="headerlink" title="库存 /repository"></a>库存 /repository</h3><ul>
-<li><p>查询用户的所有订单<br>url: /list<br>parameter: Interger UID<br>response：repositories</p>
-</li>
-<li><p>查询库存</p>
-<p>url: /query</p>
-<p>parameter； Integer GID</p>
-<p>response: repositories</p>
-</li>
-<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Game<br>response：success</p>
-</li>
-<li><p>还原订单</p>
-<p>url: /remake</p>
-<p>parameter: Integer RID</p>
-<p>response: success</p>
-</li>
-<li><p>添加库存</p>
-<p>url: /add</p>
-<p>parameter: Repository</p>
-<p>response：success</p>
-</li>
-<li><p>发送邮件<br>url: /send<br>parameter: Integer RID<br>response：success</p>
-</li>
-</ul>
-<h3 id="错误返回"><a href="#错误返回" class="headerlink" title="错误返回"></a>错误返回</h3><p>response：<br>    success: false<br>    message: Exception</p>
+            <p><img src="../images/2112205-751b60721dcbb337.png" alt="Compute sum by going up and left based on Binary Indexed Tree"></p>
+<p>图中第一行为原数组，第二到第四行为依次按层填坑的过程。我们需要从左到右，从上到下依次将相应的值填入对应的位置中。最后一行中即为最终所形成的树状数组。</p>
+<p>以图中第二行，也就是构造树状数组第一层的过程为例，我们首先需要填充的是数组中第一个数字开始，长度为2的指数个数字的区间内的数字的累加和。所以图中分别填充了从第一个数字开始，长度为2^0, 2^1, 2^2, 2^3的区间的区间和。到此为止这一步就结束了。因为2^4超过了我们原数组的长度范围。</p>
+<p>下一步我们构造数组的第二层。与上一层类似，我们依然填充余下的空白中从第空白处一个位置算起长度为2的指数的区间的区间和。例如3-3空白，我们只需填充从位置3开始，长度为1的区间的和。再如9-14空白，我们需要填充从9开始，长度为2^0（9-9），2^1（9-10），2^2（9-12）的区间和。</p>
+<p>类似地，第三层我们填充7-7，11-11和13-14区间的空白。</p>
+<p>到此为止，我们已经完全的构造了对应于输入数组的一个树状数组。将该数组即为BIT（方便起见，此处对此数组的索引为从1开始）.</p>
 
           
         
@@ -439,10 +354,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/cookie和session/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/数据结构/树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李楚豪">
+      <meta itemprop="name" content="李楚豪的博客">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -458,7 +373,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/26/cookie和session/" itemprop="url">cookie和session</a></h1>
+                <a class="post-title-link" href="/2019/04/21/数据结构/树/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -470,8 +385,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T20:12:03+08:00">
-                2019-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
               </time>
             
 
@@ -510,222 +425,1141 @@
       
         
           
-            <p><a href="https://blog.csdn.net/guoweimelon/article/details/50886092" target="_blank" rel="noopener">https://blog.csdn.net/guoweimelon/article/details/50886092</a></p>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>cookie机制采用的是在客户端保持状态的方案</p>
-<p>网站为了<strong>辨别用户身份</strong>、<strong>进行session跟踪</strong>而储存在<strong>客户端</strong>的数据。（通常经过加密）</p>
-<p>由服务端生成，发送给客户端。按照在客户端中储存位置可以分为：内存cookie和硬盘cookie。</p>
-<p>内存cookie：</p>
-<p>由浏览器维护，保存在内存中，浏览器关闭后就消失了</p>
-<p>硬盘cookie</p>
-<p>保存在硬盘中，设置生存时间。手动删除和到了生存时间自动删除。</p>
-<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><ol>
-<li><h5 id="创建cookie"><a href="#创建cookie" class="headerlink" title="创建cookie"></a>创建cookie</h5></li>
+            <h3 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h3><ul>
+<li><p>双亲表示法：</p>
+<p>每个节点保存数据和双亲节点的位置</p>
+</li>
+<li><p>双亲孩子表示法：</p>
+<p>用链表表示，节点内容是：数据、双亲节点、孩子节点；在孩子节点里是个链表保存双亲节点的所有孩子</p>
+</li>
+<li><p>孩子兄弟表示法</p>
+<p>用二叉链式存储结构：数据、最左孩子指针、右兄弟指针</p>
+</li>
+</ul>
+<p>树的先序遍历和对应的二叉树的线序遍历一样，树的<strong>后序遍历</strong>和对应二叉树的<strong>中序遍历</strong>是一样的。</p>
+<h3 id="森林"><a href="#森林" class="headerlink" title="森林"></a>森林</h3><p>并查集——集合</p>
+<p>根节点作为代表元，节点有指向双亲节点的坐标</p>
+<p>合并操作</p>
+<ol>
+<li><p>加权合并规则法</p>
+<p>节点少的树指向节点多的树的根节点。（将所有根节点存储的“-1”改为该树的节点个数）</p>
+</li>
+<li><p>路径压缩法</p>
+<p>在查找节点所在树的根节点的过程，将查找路径上每个节点的双亲节点作为根节点</p>
+</li>
 </ol>
+<h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p><img src="1533523391882.png" alt="1533523391882"></p>
+<p>一棵m阶的B树</p>
+<ol>
+<li>每个节点最多含有m个子树</li>
+<li>如果根节点不是终端节点，则最少有2棵子树</li>
+<li>除根节点之外的所有节点字少至少有（m/2）个子树</li>
+<li>关键字按照升序排序；指针指向的节点关键字全部比前一个关键字大，比后一个关键字小。</li>
+<li>叶子节点在同一层，不包含所有信息</li>
+</ol>
+<p><img src="1533523598218.png" alt="1533523598218"></p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="1533523773737.png" alt="1533523773737"></p>
+<ol>
+<li>有n棵子树的结点中含有n-1个关键字</li>
+<li>所有的叶子结点中包含了所有关键字信息</li>
+<li>所有的非终端结点可以看成是索引部分</li>
+</ol>
+<p>B+树比B树更适合实际应用中作为文件索引和数据库索引：</p>
+<ol>
+<li>B+树的磁盘读写代价更低</li>
+<li>B+树的查询效率更稳定</li>
+<li>B树在提高了磁盘IO性能的同时并没有解决元素遍历的效率低下的问题；B+树只要遍历叶子节点就可以实现整棵树的遍历。而且在数据库中基于范围的查询是非常频繁的</li>
+</ol>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>性质：</p>
+<ol>
+<li>非空二叉树第i层最多有2^(i-1)个节点</li>
+<li>深度为k最多有2^k-1个节点</li>
+<li>度为0的结点个数为n0，度为2的结点个数为n2，则n0=n2+1</li>
+</ol>
+<p>先序遍历，中序遍历、后序遍历</p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>所有非叶子节点均不大于或不小于其左右孩子节点</p>
+<p>建堆依次将编号为n/2、n/2-1、……、1的节点为根的子树筛选。</p>
+<h3 id="二叉查找树-二叉排序树"><a href="#二叉查找树-二叉排序树" class="headerlink" title="二叉查找树/二叉排序树"></a>二叉查找树/二叉排序树</h3><ol>
+<li>若左子树不空，则左子树上所有结点的值均小于根结点的值</li>
+<li>若右子树不空，则右子树所有结点的值均大于根结点的值</li>
+<li>左右子树都是二叉查找树</li>
+</ol>
+<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>空树或者是左子树与右子树的高度差的绝对值不超过1的二叉查找树</p>
+<p>失衡调整：</p>
+<ol>
+<li>LL型右旋</li>
+<li>RR型左旋</li>
+<li>LR型先左旋再右旋</li>
+<li>RL型先右旋再左旋</li>
+</ol>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p><a href="https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md" target="_blank" rel="noopener">红黑树</a>，本质上来说就是一棵二叉查找树，但它在二叉查找树的基础上增加了着色和相关的性质使得红黑树相对平衡，从而保证了红黑树的查找、插入、删除的时间复杂度最坏为O(log n)，保证一棵n个结点的红黑树的高度始终保持在h = logn。</p>
+<ol>
+<li>每个结点要么是红的，要么是黑的。  </li>
+<li>根结点是黑的。  </li>
+<li>每个叶结点（叶结点即指树尾端NIL指针或NULL结点）是黑的。  </li>
+<li>如果一个结点是红的，那么它的俩个儿子都是黑的。  </li>
+<li>对于任一结点而言，其到叶结点树尾端NIL指针的每一条路径都包含相同数目的黑结点。  </li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/数据结构/查找算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/数据结构/查找算法/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h3><p>在有序的情况下，可以使用折半查找。</p>
+<p>将n个数分成三份：（n-1）/2、1、（n-1）/2</p>
+<ol>
+<li>比较key和1这一份的大小</li>
+<li>从前面或后面的区域中。在分成三份</li>
+<li>重复以上过程</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int halfSearch(int[] a, int key, int low, int high)&#123;</span><br><span class="line">	if(low&gt;high)return -1;</span><br><span class="line">	</span><br><span class="line">    int mid = (low+high)/2;</span><br><span class="line">    </span><br><span class="line">    if(a[mid] == key)&#123;</span><br><span class="line">        return middle;</span><br><span class="line">    &#125;else if(a[mid] &gt; key)&#123;</span><br><span class="line">        return halfSearch(a, key, low, mid-1);</span><br><span class="line">    &#125;else if(a[mid]&lt; key)&#123;</span><br><span class="line">        return halfSearch(a, key, mid+1, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/数据结构/排序算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/数据结构/排序算法/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="../images/242025553_1552552364578_E70A7C7F55EE4951924DEBF98CC9513D" alt="img"></p>
+<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><ol>
+<li><p>冒泡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public void sort(int[]a)&#123;</span><br><span class="line">    for(int i=1; i&lt;a.length(); i++)&#123;</span><br><span class="line">        for(int j=0; j&lt;a.length()-i; j++)&#123;</span><br><span class="line">            if(a[i] &gt; a[j])&#123;</span><br><span class="line">                int temp = a[i];</span><br><span class="line">                a[i] = a[j];</span><br><span class="line">                a[j] =temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>快排</p>
+<p>选择一个记录作为枢轴，找出比它大的放一堆，比他小的放另外一堆。在大堆里再找一个枢轴，找出比他大的和比她小的；在小堆里也找一个枢轴，找出比他大的和比她小的。然后重复这个过程。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> public static void quickSort(int[] arr)&#123;</span><br><span class="line">    qsort(arr, 0, arr.length-1);</span><br><span class="line">&#125;</span><br><span class="line">private static void qsort(int[] arr, int low, int high)&#123;</span><br><span class="line">    if (low &lt; high)&#123;</span><br><span class="line">        int pivot=position(arr, low, high);        //将数组分为两部分</span><br><span class="line">        qsort(arr, low, pivot-1);                   //递归排序左子数组</span><br><span class="line">        qsort(arr, pivot+1, high);                  //递归排序右子数组</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> public int position(int[] a, int low, int high)&#123;</span><br><span class="line"> 	int key = a[low];</span><br><span class="line"> 	while(low&lt;high)&#123;</span><br><span class="line">        while(low&lt;high &amp;&amp; a[high]&gt;=key)</span><br><span class="line">        	high--;</span><br><span class="line">        a[low] = a[high];</span><br><span class="line">        while(low&lt;high &amp;&amp; a[low]&lt;=key)</span><br><span class="line">        	low++;</span><br><span class="line">        a[high] = a[low];</span><br><span class="line">    &#125;   </span><br><span class="line">    a[low] = key;</span><br><span class="line">    return low;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><ol>
+<li>简单选择排序（选择一个最小的值与position交换值）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public void simpleSort(int[] a)&#123;</span><br><span class="line">    for(int i=0; i&lt;a.length; i++)&#123;</span><br><span class="line">    	int position = i;</span><br><span class="line">        for(int j=i; j&lt;a.length-1; j++)&#123;</span><br><span class="line">            if(a[j] &gt; a[j+1])&#123;</span><br><span class="line">                position=j+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(i != position)&#123;</span><br><span class="line">            int temp = a[i];</span><br><span class="line">            a[i] = a[position];</span><br><span class="line">            a[position] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>堆排序——P140</li>
+</ol>
+<p>大顶堆，将堆顶和最后一个节点交换，堆长度减一，对堆进行筛选调整。再对这个新的大顶堆重复操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//  从i节点开始调整,n为节点总数 </span><br><span class="line">//	从0开始计算 i节点的子节点为 2*i+1, 2*i+2</span><br><span class="line">//	从1开始计算 i节点的子节点为 2*i, 2*i+1</span><br><span class="line">public void miniHeapFix(int[] a, int i)&#123;</span><br><span class="line">	int n = a.length();	</span><br><span class="line">    </span><br><span class="line">    for( ; n&gt;i, n--)&#123;</span><br><span class="line">    	int j = (n+1)/2-1;//父节点</span><br><span class="line">        if(a[n] &lt; a[j])&#123;</span><br><span class="line">            int temp = a[n];</span><br><span class="line">            a[n] = a[j];</span><br><span class="line">            a[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void heapSort(int[] a)&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(i&lt;a.length())&#123;</span><br><span class="line">        miniHeapFix(a, i);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ol>
+<li>直接插入排序（取全部数组的最后一个，插入到前面的有序组中；找到位置后将后面的所有数往后移位）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void insertSort(int[] a)&#123;</span><br><span class="line">	int n = a.length();</span><br><span class="line">    for(int i=1; i&lt;n; i++)&#123;</span><br><span class="line">    	int j = i-1;</span><br><span class="line">    	int temp = a[i];</span><br><span class="line">    	//a[i]是取出的元素，a[j]是有序组的最后一个元素</span><br><span class="line">    	while(j&gt;=0 &amp;&amp; temp&lt;a[j])&#123;//若不是合适位置，有序组元素向后移动 </span><br><span class="line">            a[j+1] = a[j];</span><br><span class="line">            j--;</span><br><span class="line">    	&#125;</span><br><span class="line">        a[j+1] = temp;//找到合适位置，将元素插入。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>希尔排序——分组的插入排序（用常量序列进行分组）</li>
+</ol>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>先将数组分解成一个一个数字，将最小的数组组合在一起。组合的方法是从两个数组第一个开始，选择较小的数放进高一级的数组。重复以上过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">private static void mergeArrays(int[] data, int[] temp, int start, int end)&#123;</span><br><span class="line">		int mid = (start+end)/2;</span><br><span class="line">		int i = start;</span><br><span class="line">		int alen = mid;</span><br><span class="line">		int j =mid+1;</span><br><span class="line">		int blen = end;</span><br><span class="line">		int indexOfTemp = start;</span><br><span class="line">		</span><br><span class="line">		while (i&lt;=alen &amp;&amp; j&lt;=blen)</span><br><span class="line">		&#123;</span><br><span class="line">			if (data[i] &lt; data[j])</span><br><span class="line">				temp[indexOfTemp++] = data[i++];</span><br><span class="line">			else</span><br><span class="line">				temp[indexOfTemp++] = data[j++]; </span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">		while (i &lt;= alen)</span><br><span class="line">			temp[indexOfTemp++] = data[i++];</span><br><span class="line">	 </span><br><span class="line">		while (j &lt;= blen)</span><br><span class="line">			temp[indexOfTemp++] = data[j++];	</span><br><span class="line">		</span><br><span class="line">		for(int k=start; k&lt;=end; k++) &#123;</span><br><span class="line">			data[k] = temp[k];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//拆分数组，再合并排序</span><br><span class="line">	private static void mergeSort(int data[], int start, int end, int temp[])&#123;</span><br><span class="line">		if (start &lt; end)</span><br><span class="line">		&#123;</span><br><span class="line">			int mid = (start + end) / 2;</span><br><span class="line">			mergeSort(data, start, mid, temp);    //左边有序</span><br><span class="line">			mergeSort(data, mid + 1, end, temp); //右边有序</span><br><span class="line">			mergeArrays(data, temp, start, end); //再将二个有序数列合并</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void sort(int data[])&#123;</span><br><span class="line">		int len = data.length;</span><br><span class="line">		int temp[] = new int[len];</span><br><span class="line">		for(int i=0; i&lt;len; i++) &#123;</span><br><span class="line">			temp[i] = data[i];</span><br><span class="line">		&#125;</span><br><span class="line">		mergeSort(data, 0, len-1, temp);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>这里引入迭代和递归</p>
+<p>迭代是明日边缘——不断回到起点，优化自己的选择</p>
+<p>递归是盗梦空间——一层套一层，一直到最后一层做好了在回来</p>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>“个十百”每个位都作为一个key记录每个数字出现的次数，并以此标记出每个序列的位置。（低位优先才是稳定的排序）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/数据结构/图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/数据结构/图/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>无向完全图：无向图边数最大为n(n-1)/2</p>
+<p>有向完全图：有向图边数最大为n(n-1)</p>
+<p>存储结构：邻接矩阵、邻接数组、邻接表（只存储了非零信息）</p>
+<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>从某顶点v出发，先访问该结点；对v的所有邻接结点依次进行遍历，若结点未被访问则以该结点作为新起点进行遍历。</p>
+<h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><p>从顶点出发，先访问该结点；依次访问所有未被访问的结点；再按之前邻接结点的访问顺序依次进行广度优先遍历。</p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><ol>
+<li><p>普里姆算法Prim</p>
+<p>找出与所选顶点最近的点，但不能形成回路</p>
+</li>
+<li><p>克鲁斯卡尔算法Kruskal</p>
+<p>找出最短的线，但不能形成回路</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/前端/移动WEB/触摸事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/前端/移动WEB/触摸事件/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>tap事件</p>
+<p>用touchstart、touchend 记录触摸开始位置，结束位置，触摸时间。当触摸位置没有位移（或者可以有非常小的位移）以及触摸时间在非常短的时间里（默认是200ms）就会认为是click事件。但是tap事件模拟click有 “点透“ bug。使用zepto.js来实现。</p>
+<p>touch事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">touchstart:触摸屏幕触发</span><br><span class="line">touchmove:在屏幕滑动。连续触发</span><br><span class="line">touchend:离开屏幕</span><br><span class="line">touchcancel:系统取消touch事件</span><br><span class="line"></span><br><span class="line">touches:跟踪触摸操作的touch对象数组</span><br><span class="line">targetTouches:特定事件目标的touch对象数组</span><br><span class="line">changeTouches:上次触摸改变的touch对象数组</span><br><span class="line"></span><br><span class="line">touch对象属性</span><br><span class="line">clientX,clientY:在视口中的坐标</span><br><span class="line">identifier:唯一标识</span><br><span class="line">pageX,pageY:在页面中的坐标（包含滚动）</span><br><span class="line">screenX,screenY:在屏幕中的坐标</span><br><span class="line">target:dom节点目标</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/前端/移动WEB/像素/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/前端/移动WEB/像素/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>物理像素：实际像素的大小（dp，pt）</p>
+</li>
+<li><p>逻辑像素：浏览器使用的单位（px）</p>
+</li>
+</ul>
+<p>两者之间的转换关系称为：像素缩放比（dpr）</p>
+<p>1px = (dpr)^2 * dp</p>
+<p>dpr = ppi/160</p>
+<p>不同设备之间的dpr是不一样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iphone5</span><br><span class="line">设备分辨率：1136*640 dp</span><br><span class="line">=&gt;像素密度dpi/ppi: √[(1136)^2 + (640)^2] / 4 ≈326 ppi</span><br><span class="line">=&gt;属于高清屏 dpr=2</span><br><span class="line">=&gt;根据公式可以得到屏幕的逻辑像素为320*568px</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/前端/移动WEB/viewport/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/前端/移动WEB/viewport/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>pc页面在移动端上的显示效果有出入，因此引入了viewport这个概念。</p>
+<p>viewport分为：visual viewport(度量/视图)以及layout viewport(布局)</p>
+<p>两者间存在一个缩放比：scale</p>
+<p>可以通过 meta 标签来修改viewport的一些参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot;</span><br><span class="line">	content=&quot;width=device-width,</span><br><span class="line">	initial-scale=1,</span><br><span class="line">	minimun-sclae=1,</span><br><span class="line">	maximun-scale=2,</span><br><span class="line">	user-scalable=no&quot;&gt;</span><br><span class="line">document.body.clientWidth(visual viewport)</span><br><span class="line">window.innerWidth(layout viewport)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/前端/移动WEB/flexbox弹性布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/前端/移动WEB/flexbox弹性布局/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过css来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *.nav导航使用 -webkit-flex来表示使用弹性布局</span><br><span class="line"> *.item项目使用flex：num 表示占据的比例</span><br><span class="line"> */</span><br><span class="line">.nav&#123;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    background-color: #de7c3c;</span><br><span class="line">    padding: 10px;</span><br><span class="line">    display: -webkit-flex;</span><br><span class="line">    &#125;</span><br><span class="line">.item&#123;</span><br><span class="line">    color: #Fddda7;</span><br><span class="line">    padding: 0 5px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    flex: 1;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/前端/XHtml _vs_Html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/前端/XHtml _vs_Html/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:24+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Xhtml与html最主要的不同："><a href="#Xhtml与html最主要的不同：" class="headerlink" title="Xhtml与html最主要的不同："></a>Xhtml与html最主要的不同：</h3><ul>
+<li>XHTML 元素必须被正确地嵌套。</li>
+<li>XHTML 元素必须被关闭。</li>
+<li>标签名必须用小写字母。</li>
+<li>XHTML 文档必须拥有根元素。</li>
+</ul>
+<h3 id="XHTML语法："><a href="#XHTML语法：" class="headerlink" title="XHTML语法："></a>XHTML语法：</h3><ul>
+<li><p>属性名称必须小写</p>
+</li>
+<li><p>属性值必须加引号</p>
+</li>
+<li><p>属性不能简写</p>
+</li>
+<li><p>用 Id 属性代替 name 属性</p>
+</li>
+<li><p>XHTML定义了强制使用的 HTML 元素</p>
 <ul>
-<li>当用户第一次浏览网站，<strong>服务器</strong>进行以下工作</li>
-<li>生成唯一的一个识别码（cookie id），创建一个cookie对象；</li>
-<li>默认是会话级别的cookie，储存在内存中，退出浏览器就会被删除。设置了最大生存周期（maxAge），就会存储在硬盘中。</li>
-<li>cookie放入http响应报头，将cookie插入到Set-Cookie HTTP请求报头中。</li>
-<li>发送HTTP响应报文。</li>
+<li>所有 XHTML 文档必须进行文件类型声明（DOCTYPE declaration）。</li>
+<li>在 XHTML 文档中必须存在html、head、body元素，而 title 元素必须位于在 head 元素中。</li>
+<li>在 XHTML 中，<html> 标签内的 xmlns 属性是必需的。</html></li>
 </ul>
-<ol start="2">
-<li><h5 id="设置储存cookie"><a href="#设置储存cookie" class="headerlink" title="设置储存cookie"></a>设置储存cookie</h5></li>
-</ol>
-<p>浏览器收到响应报文，会根据Set-Cookie的指示，生成相应的cookie，保存在客户端，该cookie记录着用户当前的信息。</p>
-<ol start="3">
-<li><h5 id="发送cookie"><a href="#发送cookie" class="headerlink" title="发送cookie"></a>发送cookie</h5></li>
-</ol>
-<p>再次访问该网站，会首先检查储存的cookies，如果存在该网站的cookie（即cookie所声明的作用范围大于等于将要请求的资源），则把该cookie放在请求资源的http报文请求头上发送给服务器。</p>
-<ol start="4">
-<li><h5 id="读取cookie"><a href="#读取cookie" class="headerlink" title="读取cookie"></a>读取cookie</h5></li>
-</ol>
-<p>服务器接受到请求报文，从报文头部获取用户的cookie。</p>
-<h4 id="可以实现的功能："><a href="#可以实现的功能：" class="headerlink" title="可以实现的功能："></a>可以实现的功能：</h4><ol>
-<li>自动登录</li>
-<li>购物车功能</li>
-<li>记录用户浏览数据，广告推送</li>
-</ol>
-<h4 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h4><p>cookie附加在HTTP请求，增加流量</p>
-<p>HTTP中cookie是明文传递 </p>
-<p>cookie大小在4KB左右</p>
-<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>session代表服务器的一次会话过程，可以是连续的，也可以是时断时续的。</p>
-<p>由服务器生成，保存在服务器的内存、缓存、硬盘或数据库中。</p>
-<p>session机制采用的是在服务器端保持状态的方案。</p>
-<h4 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h4><ol>
-<li>创建session</li>
-</ol>
-<p>当用户访问到一个服务器，如果服务器启用了session。服务器就要为用户创建 一个session。</p>
-<p>在创建session的时候，首先检查用户发来的请求报文汇总是否包含了一个session id，如果有则说明该用户之前访问过服务器，就会根据这个session id将在服务器内存中的session找出来（找不到就会重新创建一个），如果请求报文中没有这个session id，则为该客户端创建一个session并生成一个对应的session id。</p>
-<p>session id是唯一的，不重复的，不容易找到规律的字符串。</p>
-<p>session id会被保存在本次响应中，返回客户端保存，保存方式正是cookie。</p>
-<ol start="2">
-<li>使用session</li>
-</ol>
-<p>如果禁止了cookie，session id仍然可以继续使用，方法为：<strong>URL重写</strong>和<strong>表单隐藏字段</strong></p>
-<p>URL重写：把session id直接附加在URL路径后面表现形式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://…./xxx;jSession=ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764；</span><br></pre></td></tr></table></figure>
-<p>或者作为查询字符串附加在URL后面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://…../xxx?jSession=ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764</span><br></pre></td></tr></table></figure>
-<p>表单隐藏字段：</p>
-<p>服务器自动修改表单，添加一个隐藏字段，在提交表单时能把session id传会服务器。</p>
-<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><p>判断用户是否曾经登录过</p>
-<p>购物车功能</p>
-<h3 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h3><ol>
-<li>存放位置不同</li>
-</ol>
-<p>cookie放在客户端，session放在服务端</p>
-<ol start="2">
-<li>存取方式</li>
-</ol>
-<p>cookie只能保管ASCII字符串，假如需要存取Unicode字符或者二进制数据，需要先进行编码。cookie也不能直接存取java对象</p>
-<p>session可以存取任何类型的数据，能直接保管java bean，可以把session看作是一个java容器类。</p>
-<ol start="3">
-<li>安全性（隐私策略）</li>
-</ol>
-<p>cookie存储在浏览器中，对用户可见，一些程序可能会窥探用户的cookie</p>
-<p>session放在服务器中，对用户透明</p>
-<p>使用建议：敏感的信息如帐号密码等不要写在cookie中，最好是先进行加密，提交到服务器之后在进行解密。</p>
-<ol start="4">
-<li>有效期</li>
-</ol>
-<p>可以将cookie的生存时间设置为一个很大的数字，cookie就会在浏览器保存很长时间。由于session依赖于session id这一cookie，而该数据过期时间默认为-1，即关闭浏览器（一次会话结束）就会失效</p>
-<ol start="5">
-<li>对服务器的压力</li>
-</ol>
-<p>session保存在服务器中，每个用户都会生成一个session，假如用户达到一定数量就会耗费大量的内存</p>
-<p>cookie保存在客户端，不占用服务器资源。</p>
-<ol start="6">
-<li>跨域支持</li>
-</ol>
-<p>cookie支持跨域名访问，假如将domain属性设置为“baidu.com”，则以“baidu.com”为后缀的一切域名都可以访问cookie</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李楚豪">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/24/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T16:18:46+08:00">
-                2019-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><em>ps: 你应该在 “/“ 符号前添加一个额外的空格，以使你的 XHTML 与当今的浏览器相兼容。</em></p>
+</li>
+</ul>
+<p>存在三种XHtml文档类型：</p>
+<ul>
+<li>STRICT（严格类型）：需要干净的标记，避免表现上的混乱。请与层叠样式表配合使用。</li>
+<li>TRANSITIONAL（过渡类型）：当需要利用 HTML 在表现上的特性，并且需要为那些不支持层叠样式表的浏览器编写 XHTML 时</li>
+<li>FRAMESET（框架类型）：需要使用HTML框架将浏览器窗口分割为两部分或更多框架时</li>
+</ul>
+<p><a href="http://www.w3school.com.cn/xhtml/xhtml_modules.asp" target="_blank" rel="noopener">XHTML 模块</a></p>
+<p><a href="http://www.w3school.com.cn/xhtml/xhtml_standardattributes.asp" target="_blank" rel="noopener">XHTML 标准属性</a></p>
+<p><a href="http://www.w3school.com.cn/tags/index.asp" target="_blank" rel="noopener">HTML 参考手册</a></p>
 
           
         
@@ -764,6 +1598,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -796,7 +1634,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">李楚豪</p>
+              <p class="site-author-name" itemprop="name">李楚豪的博客</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -807,7 +1645,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -861,7 +1699,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">李楚豪</span>
+  <span class="author" itemprop="copyrightHolder">李楚豪的博客</span>
 
   
 </div>

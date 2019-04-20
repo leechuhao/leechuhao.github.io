@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web开发,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: userresponse: user  通过用户名（nickname）查找用户： url: /name param">
+<meta name="keywords" content="web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕业设计API">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/毕业设计API/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: userresponse: user  通过用户名（nickname）查找用户： url: /name param">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-20T16:12:24.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="毕业设计API">
+<meta name="twitter:description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: userresponse: user  通过用户名（nickname）查找用户： url: /name param">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/20/毕业设计API/">
+
+
+
+
+
+  <title>毕业设计API | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/毕业设计API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">毕业设计API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T10:16:00+08:00">
+                2019-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>IP+端口：127.0.0.1:8080<br>context-path: /gameshop</p>
+<p>test: ../hello</p>
+<h3 id="用户-user"><a href="#用户-user" class="headerlink" title="用户 /user"></a>用户 /user</h3><ul>
+<li>User<ul>
+<li>Integer UID</li>
+<li>String email</li>
+<li>String nickname</li>
+</ul>
+</li>
+<li><p>通过ID查找用户：<br>url：/id<br>parameter: user<br>response: user</p>
+</li>
+<li><p>通过用户名（nickname）查找用户：</p>
+<p>url: /name</p>
+<p>parameter: user</p>
+<p>response: user</p>
+</li>
+<li><p>注册：<br>url: /register<br>parameter: user<br>response：success</p>
+</li>
+<li><p>更新用户信息：</p>
+<p>url: /update</p>
+<p>parameter: user</p>
+<p>response: success</p>
+</li>
+</ul>
+<h3 id="游戏-game"><a href="#游戏-game" class="headerlink" title="游戏 /game"></a>游戏 /game</h3><ul>
+<li>Game<ul>
+<li>Integer GID</li>
+<li>String name</li>
+<li>Float cost</li>
+<li>String introduction</li>
+<li>String url</li>
+<li>Integer type</li>
+</ul>
+</li>
+<li><p>获取所有游戏<br>url: /listgame<br>parameter；none<br>response：games</p>
+</li>
+<li><p>游戏详细信息<br>url: /detail<br>parameter: Interger GID<br>response：game</p>
+</li>
+<li><p>获取某类型的所有游戏<br>url: /type<br>parameter: Interger type<br>response：games</p>
+</li>
+<li><p>添加游戏</p>
+<p>url: /add</p>
+<p>parameter: game</p>
+<p>response: success</p>
+</li>
+<li><p>更新游戏信息</p>
+<p>url: /update</p>
+<p>parameter: game</p>
+<p>response: success</p>
+</li>
+</ul>
+<p>游戏类型参考表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数值</th>
+<th style="text-align:center">游戏类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">其他类</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">FPS类</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">棋牌类</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">赛车类</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">动作类</td>
+</tr>
+</tbody>
+</table>
+<h3 id="库存-repository"><a href="#库存-repository" class="headerlink" title="库存 /repository"></a>库存 /repository</h3><ul>
+<li>Repository<ul>
+<li>Integer RID;</li>
+<li>Integer UID;</li>
+<li>Integer GID;</li>
+<li>String name;</li>
+<li>String buyDate;</li>
+<li>String gamekey;</li>
+<li>Integer used;</li>
+</ul>
+</li>
+<li><p>查询用户的所有订单<br>url: /list<br>parameter: Interger UID<br>response：repositories</p>
+</li>
+<li><p>查询库存</p>
+<p>url: /query</p>
+<p>parameter； Integer GID</p>
+<p>response: repositories</p>
+</li>
+<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Game<br>response：success</p>
+</li>
+<li><p>还原订单</p>
+<p>url: /remake</p>
+<p>parameter: Integer RID</p>
+<p>response: success</p>
+</li>
+<li><p>添加库存</p>
+<p>url: /add</p>
+<p>parameter: Repository</p>
+<p>response：success</p>
+</li>
+<li><p>发送邮件<br>url: /send<br>parameter: Integer RID<br>response：success</p>
+</li>
+</ul>
+<h3 id="错误返回"><a href="#错误返回" class="headerlink" title="错误返回"></a>错误返回</h3><p>response：<br>    success: false<br>    message: Exception</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web开发/" rel="tag"># web开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/26/cookie和session/" rel="next" title="cookie和session">
+                <i class="fa fa-chevron-left"></i> cookie和session
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/21/网络协议/HTTP状态码/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李楚豪的博客</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户-user"><span class="nav-number">1.</span> <span class="nav-text">用户 /user</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游戏-game"><span class="nav-number">2.</span> <span class="nav-text">游戏 /game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库存-repository"><span class="nav-number">3.</span> <span class="nav-text">库存 /repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误返回"><span class="nav-number">4.</span> <span class="nav-text">错误返回</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李楚豪的博客</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

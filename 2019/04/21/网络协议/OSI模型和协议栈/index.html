@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="OSI模型最近网络的巨大变革SDN 1. 物理层 传输单元：比特  传输介质：双绞线、同轴电缆、光纤、无线信号  信道复用技术：频分复用FDM、时分复用TDM、统计时分复用STDM、波分复用WDM、码分复用CDM  2.链路层（data-link layer） 传输单元：帧 封装成帧、透明传输、差错检测  点对点协议PPP：    简单：不需要纠错、不需要序号、不需要流量控制 封装成帧 透明性 多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/网络协议/OSI模型和协议栈/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="OSI模型最近网络的巨大变革SDN 1. 物理层 传输单元：比特  传输介质：双绞线、同轴电缆、光纤、无线信号  信道复用技术：频分复用FDM、时分复用TDM、统计时分复用STDM、波分复用WDM、码分复用CDM  2.链路层（data-link layer） 传输单元：帧 封装成帧、透明传输、差错检测  点对点协议PPP：    简单：不需要纠错、不需要序号、不需要流量控制 封装成帧 透明性 多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-09T12:09:29.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="OSI模型最近网络的巨大变革SDN 1. 物理层 传输单元：比特  传输介质：双绞线、同轴电缆、光纤、无线信号  信道复用技术：频分复用FDM、时分复用TDM、统计时分复用STDM、波分复用WDM、码分复用CDM  2.链路层（data-link layer） 传输单元：帧 封装成帧、透明传输、差错检测  点对点协议PPP：    简单：不需要纠错、不需要序号、不需要流量控制 封装成帧 透明性 多">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/21/网络协议/OSI模型和协议栈/">
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/网络协议/OSI模型和协议栈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:20+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="OSI模型"><a href="#OSI模型" class="headerlink" title="OSI模型"></a>OSI模型</h1><p>最近网络的巨大变革<a href="D1net.com">SDN</a></p>
+<h2 id="1-物理层"><a href="#1-物理层" class="headerlink" title="1. 物理层"></a>1. 物理层</h2><ul>
+<li><p>传输单元：比特</p>
+</li>
+<li><p>传输介质：双绞线、同轴电缆、光纤、无线信号</p>
+</li>
+<li>信道复用技术：频分复用FDM、时分复用TDM、统计时分复用STDM、波分复用WDM、码分复用CDM</li>
+</ul>
+<h2 id="2-链路层（data-link-layer）"><a href="#2-链路层（data-link-layer）" class="headerlink" title="2.链路层（data-link layer）"></a>2.链路层（data-link layer）</h2><ul>
+<li>传输单元：帧</li>
+<li><p>封装成帧、透明传输、差错检测</p>
+</li>
+<li><p>点对点协议PPP：</p>
+</li>
+</ul>
+<ol>
+<li>简单：不需要纠错、不需要序号、不需要流量控制</li>
+<li>封装成帧</li>
+<li>透明性</li>
+<li>多种网络层协议</li>
+<li>多种类型链路： PPPoE 以太网~ppp</li>
+<li>差错检测</li>
+<li>检测连接状态</li>
+<li>最大传送单元 MTU： 帧可以载荷的数据部分的最大长度</li>
+<li>网络层地址协商</li>
+<li>数据压缩协商</li>
+</ol>
+<ul>
+<li><p>以太网：</p>
+<ul>
+<li>无连接、曼彻斯特编码</li>
+<li>CSMA/CD协议：多点接入、载波监听、碰撞检测</li>
+<li>争用期：51.2μs</li>
+<li>帧间最小间隔：9.6μs</li>
+</ul>
+</li>
+<li><p><strong>MAC地址</strong>：<br>  MAC帧： 不少于64字节</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目的地址</th>
+<th>源地址</th>
+<th>类型</th>
+<th>ip数据报</th>
+<th>FCS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>46~1500</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>ps：FCS 帧检验序列（CRC校验）</p>
+<h2 id="3-网络层（network-layer）"><a href="#3-网络层（network-layer）" class="headerlink" title="3.网络层（network layer）"></a>3.网络层（network layer）</h2><ul>
+<li>IP地址：<ul>
+<li>A类地址：0</li>
+<li>B类地址：10</li>
+<li>C类地址：110</li>
+<li>D类地址：1110（多播）</li>
+<li>E类地址：1111</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>arp协议：把IP地址解析出在数据链路层使用的MAC地址</p>
+</li>
+<li><p>ip数据报：45~1500字节</p>
+<p>| MAC地址 | IP地址 | TCP报文 |</p>
+</li>
+</ul>
+<pre><code>- 首部的相关字段：版本4、首部长度4、区分服务8、总长度16、标识16、标志3、片偏移13、生存时间TTL 8、协议8、首部校验和16、源地址32、目的地址32
+</code></pre><ul>
+<li><p>子网划分：子网掩码</p>
+</li>
+<li><p>网际控制报文协议ICMP：——PING</p>
+<ul>
+<li>ICMP差错报告报文：终点不可达、源点抑制、时间超过、参数问题、改变路由（重定向）</li>
+<li>ICMP询问报文：回送请求和回答、时间戳请求和回答</li>
+</ul>
+</li>
+<li><p>路由选择协议：</p>
+<ul>
+<li>内部网关协议IGP：路由信息协议RIP（15跳）、开放最短路径优先 OSPF</li>
+<li>外部网管协议EGP：边界网关协议BGP</li>
+</ul>
+</li>
+<li><p>路由器：路由选择、分组转发</p>
+</li>
+<li><p>虚拟专用网VPN</p>
+</li>
+<li>网络地址转换NAT</li>
+</ul>
+<h2 id="4-运输层"><a href="#4-运输层" class="headerlink" title="4.运输层"></a>4.运输层</h2><h3 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a><strong>TCP/UDP</strong></h3><ul>
+<li>TCP：三次握手、四次挥手<ul>
+<li>面向连接</li>
+<li>一对一</li>
+<li>可靠交付</li>
+<li>全双工通信</li>
+<li>面向字节流</li>
+<li>以字节为单位的滑动窗口：慢开始、拥塞避免、快重传、快恢复</li>
+</ul>
+</li>
+</ul>
+<p>TCP首部：<br>| 源端口  | 目的端口 | 序号   | 确认号  | 数据偏移 | 保留   | 紧急URG | 确认ACK | 推送PSH | 复位RST | 同步SYN | 终止FIN | 窗口   | 检验和  | 紧急指针 | 选项   |<br>| —- | —- | —- | —- | —- | —- | —– | —– | —– | —– | —– | —– | —- | —- | —- | —- |<br>| 2    | 2    | 4    | 4    | 4    | 6    | 1     | 1     | 1     | 1     | 1     | 1     | 2    | 2    | 2    | 最长40 |</p>
+<ul>
+<li>UDP：<ul>
+<li>无连接</li>
+<li>尽最大努力交付</li>
+<li>面向报文</li>
+<li>没有拥塞控制</li>
+<li>支持一对一、一对多、多对一、多对多的交互通信</li>
+<li>首部开销小</li>
+</ul>
+</li>
+</ul>
+<p>伪首部：仅为了计算检验和，不传递<br>| 源IP地址 | 目的IP地址 | 0    | 17   | UDP长度 |<br>| —– | —— | —- | —- | —– |<br>| 4     | 4      | 1    | 1    | 2     |<br>UDP首部：<br>| 伪首部  | 源端口  | 目的端口 | 长度   | 检验和  |<br>| —- | —- | —- | —- | —- |<br>| 12   | 2    | 2    | 2    | 2    |</p>
+<h2 id="5-会话层"><a href="#5-会话层" class="headerlink" title="5. 会话层"></a>5. 会话层</h2><p>会话层（Session Layer）负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接。</p>
+<h2 id="6-表达层"><a href="#6-表达层" class="headerlink" title="6.表达层"></a>6.表达层</h2><p>表达层（Presentation Layer）把数据转换为能与接收者的系统格式兼容并适合传输的格式。</p>
+<h2 id="7-应用层"><a href="#7-应用层" class="headerlink" title="7. 应用层"></a>7. 应用层</h2><ul>
+<li><p>域名系统DNS：递归查询、迭代查询</p>
+</li>
+<li><p>文件传输协议FTP：端口21</p>
+</li>
+<li><p>远程终端协议TELNET</p>
+</li>
+<li><p>HTTP：</p>
+<ul>
+<li>面向事务</li>
+<li>本身无连接</li>
+<li>无状态</li>
+<li><p>持续连接1.1</p>
+<p>请求报文的一些方法：</p>
+<p>| 方法（操作）  |        意义         |<br>| :—–: | :—————: |<br>| OPTION  |     请求一些选项的信息     |<br>|   GET   |  请求读取由URL所标志的信息   |<br>|  HEAD   | 请求读取由URL所标志的信息的首部 |<br>|  POST   |  给服务器添加信息（例如，注释）  |<br>|   PUT   |  在指明的URL下存储一个文档   |<br>| DELETE  |  删除指明的URL所标志的资源   |<br>|  TRACE  |   用来进行环回测试的请求报文   |<br>| CONNECT |      用于代理服务器      |</p>
+</li>
+</ul>
+</li>
+<li><p>请求报文：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>GET /chn/zxczxc/index.htm HTTP/1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HOST:<a href="http://www.tsinghua.edu.cn" target="_blank" rel="noopener">www.tsinghua.edu.cn</a></td>
+</tr>
+<tr>
+<td>Connection:close</td>
+</tr>
+<tr>
+<td>User-Agent:Mozilla/5.0</td>
+</tr>
+<tr>
+<td>Accept-Language:cn</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>响应报文状态码：</li>
+</ul>
+<p>1xx表示通知信息的，如 收到请求或正在处理</p>
+<p>2xx表示成功，如结合艘或知道了</p>
+<p>3xx表示重定向，如要完成请求还要采取进一步的行动</p>
+<p>4xx表示客户的差错，如请求中有错误的语法或不能完成</p>
+<p>5xx表示服务器的差错，如服务器失效无法完成请求</p>
+<p>ps：202-接受、400-错误请求、404-not found、301-永久转移</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/网络协议/HTTP状态码/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/21/网络协议/TCP&telnet/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李楚豪的博客</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OSI模型"><span class="nav-number">1.</span> <span class="nav-text">OSI模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-物理层"><span class="nav-number">1.1.</span> <span class="nav-text">1. 物理层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链路层（data-link-layer）"><span class="nav-number">1.2.</span> <span class="nav-text">2.链路层（data-link layer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络层（network-layer）"><span class="nav-number">1.3.</span> <span class="nav-text">3.网络层（network layer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-运输层"><span class="nav-number">1.4.</span> <span class="nav-text">4.运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-UDP"><span class="nav-number">1.4.1.</span> <span class="nav-text">TCP/UDP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-会话层"><span class="nav-number">1.5.</span> <span class="nav-text">5. 会话层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-表达层"><span class="nav-number">1.6.</span> <span class="nav-text">6.表达层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-应用层"><span class="nav-number">1.7.</span> <span class="nav-text">7. 应用层</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李楚豪的博客</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

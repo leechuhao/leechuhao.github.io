@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文 JDK原生API问题JDK原生也有一套网络应用程序API，但是存在一系列问题，主要如下：  NIO的类库和API繁杂，使用麻烦，你需要熟练掌握Selector、ServerSocketChannel、SocketChannel、ByteBuffer等 需要具备其它的额外技能做铺垫，例如熟悉Java多线程编程，因为NIO编程涉及到Reactor模式，你必须对多线程和网路编程非常熟悉，才能编写出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/java后端/Netty/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原文 JDK原生API问题JDK原生也有一套网络应用程序API，但是存在一系列问题，主要如下：  NIO的类库和API繁杂，使用麻烦，你需要熟练掌握Selector、ServerSocketChannel、SocketChannel、ByteBuffer等 需要具备其它的额外技能做铺垫，例如熟悉Java多线程编程，因为NIO编程涉及到Reactor模式，你必须对多线程和网路编程非常熟悉，才能编写出">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/641.png">
+<meta property="og:image" content="http://yoursite.com/642.png">
+<meta property="og:image" content="http://yoursite.com/1.png">
+<meta property="og:image" content="http://yoursite.com/2.png">
+<meta property="og:image" content="http://yoursite.com/3.png">
+<meta property="og:image" content="http://yoursite.com/4.png">
+<meta property="og:image" content="http://yoursite.com/5.png">
+<meta property="og:updated_time" content="2018-12-10T16:59:37.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="原文 JDK原生API问题JDK原生也有一套网络应用程序API，但是存在一系列问题，主要如下：  NIO的类库和API繁杂，使用麻烦，你需要熟练掌握Selector、ServerSocketChannel、SocketChannel、ByteBuffer等 需要具备其它的额外技能做铺垫，例如熟悉Java多线程编程，因为NIO编程涉及到Reactor模式，你必须对多线程和网路编程非常熟悉，才能编写出">
+<meta name="twitter:image" content="http://yoursite.com/641.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/21/java后端/Netty/">
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/java后端/Netty/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李楚豪的博客">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T00:15:22+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://mp.weixin.qq.com/s?__biz=MzIxNjA5MTM2MA==&amp;mid=2652435160&amp;idx=1&amp;sn=08a3757772e2edcedbd207d04ae21e22&amp;chksm=8c620d57bb158441aa2b81587b67ba446ae3b17599b213f2d985914584d98aee3bac7844ab04&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">原文</a></p>
+<h3 id="JDK原生API问题"><a href="#JDK原生API问题" class="headerlink" title="JDK原生API问题"></a>JDK原生API问题</h3><p>JDK原生也有一套网络应用程序API，但是存在一系列问题，主要如下：</p>
+<ul>
+<li>NIO的类库和API繁杂，使用麻烦，你需要熟练掌握Selector、ServerSocketChannel、SocketChannel、ByteBuffer等</li>
+<li>需要具备其它的额外技能做铺垫，例如熟悉Java多线程编程，因为NIO编程涉及到Reactor模式，你必须对多线程和网路编程非常熟悉，才能编写出高质量的NIO程序</li>
+<li>可靠性能力补齐，开发工作量和难度都非常大。例如客户端面临断连重连、网络闪断、半包读写、失败缓存、网络拥塞和异常码流的处理等等，NIO编程的特点是功能开发相对容易，但是可靠性能力补齐工作量和难度都非常大</li>
+<li>JDK NIO的BUG，例如臭名昭著的epoll bug，它会导致Selector空轮询，最终导致CPU 100%。官方声称在JDK1.6版本的update18修复了该问题，但是直到JDK1.7版本该问题仍旧存在，只不过该bug发生概率降低了一些而已，它并没有被根本解决</li>
+</ul>
+<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);</span><br><span class="line"></span><br><span class="line">int poll(struct pollfd *fds, nfds_t nfds, int timeout);</span><br><span class="line"></span><br><span class="line">int epfd = epoll_create(10);</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);</span><br></pre></td></tr></table></figure>
+<h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><p><img src="/641.png" alt="img"></p>
+<p>在I/O复用模型中，会用到select，这个函数也会使进程阻塞，但是和阻塞I/O所不同的的，这两个函数可以同时阻塞多个I/O操作，而且可以同时对多个读操作，多个写操作的I/O函数进行检测，直到有数据可读或可写时，才真正调用I/O操作函数.</p>
+<h4 id="Netty使用的IO模型"><a href="#Netty使用的IO模型" class="headerlink" title="Netty使用的IO模型"></a>Netty使用的IO模型</h4><p><img src="/642.png" alt="img"></p>
+<h3 id="Reactor线程模型"><a href="#Reactor线程模型" class="headerlink" title="Reactor线程模型"></a>Reactor线程模型</h3><p>Reactor是反应堆的意思，Reactor模型，是指通过一个或多个输入同时传递给服务处理器的服务请求的<strong>事件驱动处理模式</strong>。</p>
+<p>Reactor指的是服务器处理请求时，将所有请求用Reactor(反应堆)接收，然后将请求分发到handlers（处理器）来进行处理。</p>
+<p>另外Netty中使用的是<strong>主从Reactor</strong>。</p>
+<p><strong>主从Reactor</strong>多线程模型有多个Reactor：MainReactor和SubReactor：</p>
+<ul>
+<li>MainReactor负责客户端的连接请求，并将请求转交给SubReactor</li>
+<li>SubReactor负责相应通道的IO读写请求</li>
+<li>非IO请求（具体逻辑处理）的任务则会直接写入队列，等待worker threads进行处理</li>
+</ul>
+<p><img src="/1.png" alt="img"></p>
+<p><strong>事件驱动模型</strong></p>
+<p>发生事件，主线程把事件放入事件队列，在另外线程不断循环消费事件列表中的事件，调用事件对应的处理逻辑处理事件。事件驱动方式也被称为消息通知方式，其实是设计模式中<strong>观察者模式</strong>的思路。</p>
+<p>主要包括4个基本组件：</p>
+<ul>
+<li>事件队列（event queue）：接收事件的入口，存储待处理事件</li>
+<li>分发器（event mediator）：将不同的事件分发到不同的业务逻辑单元</li>
+<li>事件通道（event channel）：分发器与处理器之间的联系渠道</li>
+<li>事件处理器（event processor）：实现业务逻辑，处理完成后会发出事件，触发下一步操作</li>
+</ul>
+<p><img src="/2.png" alt="img"></p>
+<h3 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h3><ul>
+<li>传输服务<br>支持BIO和NIO</li>
+<li>容器集成<br>支持OSGI、JBossMC、Spring、Guice容器</li>
+<li>协议支持<br>HTTP、Protobuf、二进制、文本、WebSocket等一系列常见协议都支持。<br>还支持通过实行编码解码逻辑来实现自定义协议</li>
+<li>Core核心<br>可扩展事件模型、通用通信API、支持零拷贝的ByteBuf缓冲对象</li>
+</ul>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><h4 id="Bootstrap、ServerBootstrap"><a href="#Bootstrap、ServerBootstrap" class="headerlink" title="Bootstrap、ServerBootstrap"></a><strong>Bootstrap、ServerBootstrap</strong></h4><p>Bootstrap意思是引导，一个Netty应用通常由一个Bootstrap开始，主要作用是配置整个Netty程序，串联各个组件，Netty中Bootstrap类是客户端程序的启动引导类，ServerBootstrap是服务端启动引导类。</p>
+<p>####<strong>Future、ChannelFuture</strong></p>
+<p>正如前面介绍，在Netty中所有的IO操作都是异步的，不能立刻得知消息是否被正确处理，但是可以过一会等它执行完成或者直接注册一个监听，具体的实现就是通过Future和ChannelFutures，他们可以注册一个监听，当操作执行成功或失败时监听会自动触发注册的监听事件。</p>
+<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a><strong>Channel</strong></h4><p>Netty网络通信的组件，能够用于执行网络I/O操作。<br>Channel为用户提供：</p>
+<ul>
+<li><p>当前网络连接的通道的状态（例如是否打开？是否已连接？）</p>
+</li>
+<li><p>网络连接的配置参数 （例如接收缓冲区大小）</p>
+</li>
+<li><p>提供异步的网络I/O操作(如建立连接，读写，绑定端口)，异步调用意味着任何I / O调用都将立即返回，并且不保证在调用结束时所请求的I / O操作已完成。调用立即返回一个ChannelFuture实例，通过注册监听器到ChannelFuture上，可以I / O操作成功、失败或取消时回调通知调用方。</p>
+</li>
+<li><p>支持关联I/O操作与对应的处理程序</p>
+<p>不同协议、不同的阻塞类型的连接都有不同的 Channel 类型与之对应，下面是一些常用的 Channel 类型</p>
+</li>
+<li><p>NioSocketChannel，异步的客户端 TCP Socket 连接</p>
+</li>
+<li><p>NioServerSocketChannel，异步的服务器端 TCP Socket 连接</p>
+</li>
+<li><p>NioDatagramChannel，异步的 UDP 连接</p>
+</li>
+<li><p>NioSctpChannel，异步的客户端 Sctp 连接</p>
+</li>
+<li><p>NioSctpServerChannel，异步的 Sctp 服务器端连接</p>
+</li>
+</ul>
+<p>这些通道涵盖了 UDP 和 TCP网络 IO以及文件 IO.</p>
+<h4 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a><strong>Selector</strong></h4><p>Netty基于Selector对象实现I/O多路复用，通过 Selector, 一个线程可以监听多个连接的Channel事件, 当向一个Selector中注册Channel 后，Selector 内部的机制就可以自动不断地查询(select) 这些注册的Channel是否有已就绪的I/O事件(例如可读, 可写, 网络连接完成等)，这样程序就可以很简单地使用一个线程高效地管理多个 Channel 。</p>
+<h4 id="NioEventLoop"><a href="#NioEventLoop" class="headerlink" title="NioEventLoop"></a><strong>NioEventLoop</strong></h4><p>NioEventLoop中维护了一个线程和任务队列，支持异步提交执行任务，线程启动时会调用NioEventLoop的run方法，执行I/O任务和非I/O任务：</p>
+<ul>
+<li>I/O任务<br>即selectionKey中ready的事件，如accept、connect、read、write等，由processSelectedKeys方法触发。</li>
+<li>非IO任务<br>添加到taskQueue中的任务，如register0、bind0等任务，由runAllTasks方法触发。</li>
+</ul>
+<p>两种任务的执行时间比由变量ioRatio控制，默认为50，则表示允许非IO任务执行的时间与IO任务的执行时间相等。</p>
+<h4 id="NioEventLoopGroup"><a href="#NioEventLoopGroup" class="headerlink" title="NioEventLoopGroup"></a><strong>NioEventLoopGroup</strong></h4><p>NioEventLoopGroup，主要管理eventLoop的生命周期，可以理解为一个线程池，内部维护了一组线程，每个线程(NioEventLoop)负责处理多个Channel上的事件，而一个Channel只对应于一个线程。</p>
+<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a><strong>ChannelHandler</strong></h4><p>ChannelHandler是一个接口，处理I / O事件或拦截I / O操作，并将其转发到其ChannelPipeline(业务处理链)中的下一个处理程序。</p>
+<p>ChannelHandler本身并没有提供很多方法，因为这个接口有许多的方法需要实现，方便使用期间，可以继承它的子类：</p>
+<ul>
+<li>ChannelInboundHandler用于处理入站I / O事件</li>
+<li>ChannelOutboundHandler用于处理出站I / O操作</li>
+</ul>
+<p>或者使用以下适配器类：</p>
+<ul>
+<li><p>ChannelInboundHandlerAdapter用于处理入站I / O事件</p>
+</li>
+<li><p>ChannelOutboundHandlerAdapter用于处理出站I / O操作</p>
+</li>
+<li><p>ChannelDuplexHandler用于处理入站和出站事件</p>
+</li>
+</ul>
+<h4 id="ChannelHandlerContext"><a href="#ChannelHandlerContext" class="headerlink" title="ChannelHandlerContext"></a><strong>ChannelHandlerContext</strong></h4><p>保存Channel相关的所有上下文信息，同时关联一个ChannelHandler对象</p>
+<h4 id="ChannelPipline"><a href="#ChannelPipline" class="headerlink" title="ChannelPipline"></a><strong>ChannelPipline</strong></h4><p>保存ChannelHandler的List，用于处理或拦截Channel的入站事件和出站操作。 ChannelPipeline实现了一种高级形式的拦截过滤器模式，使用户可以完全控制事件的处理方式，以及Channel中各个的ChannelHandler如何相互交互。</p>
+<p>下图引用Netty的Javadoc4.1中ChannelPipline的说明，描述了ChannelPipeline中ChannelHandler通常如何处理I/O事件。 I/O事件由ChannelInboundHandler或ChannelOutboundHandler处理，并通过调用ChannelHandlerContext中定义的事件传播方法（例如ChannelHandlerContext.fireChannelRead（Object）和ChannelOutboundInvoker.write（Object））转发到其最近的处理程序。</p>
+<p><img src="/3.png" alt="img"></p>
+<p>入站事件由自下而上方向的入站处理程序处理，如图左侧所示。 入站Handler处理程序通常处理由图底部的I / O线程生成的入站数据。 通常通过实际输入操作（例如SocketChannel.read（ByteBuffer））从远程读取入站数据。</p>
+<p>出站事件由上下方向处理，如图右侧所示。 出站Handler处理程序通常会生成或转换出站传输，例如write请求。 I/O线程通常执行实际的输出操作，例如SocketChannel.write（ByteBuffer）。</p>
+<p>在 Netty 中每个 Channel 都有且仅有一个 ChannelPipeline 与之对应, 它们的组成关系如下:</p>
+<p><img src="/4.png" alt="img"></p>
+<p>一个 Channel 包含了一个 ChannelPipeline, 而 ChannelPipeline 中又维护了一个由 ChannelHandlerContext 组成的双向链表, 并且每个 ChannelHandlerContext 中又关联着一个 ChannelHandler。入站事件和出站事件在一个双向链表中，入站事件会从链表head往后传递到最后一个入站的handler，出站事件会从链表tail往前传递到最前一个出站的handler，两种类型的handler互不干扰。</p>
+<h3 id="服务器启动代码"><a href="#服务器启动代码" class="headerlink" title="服务器启动代码"></a>服务器启动代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">       // 创建mainReactor</span><br><span class="line">       NioEventLoopGroup boosGroup = new NioEventLoopGroup();</span><br><span class="line">       // 创建工作线程组</span><br><span class="line">       NioEventLoopGroup workerGroup = new NioEventLoopGroup();</span><br><span class="line"></span><br><span class="line">       final ServerBootstrap serverBootstrap = new ServerBootstrap();</span><br><span class="line">       serverBootstrap </span><br><span class="line">                // 组装NioEventLoopGroup </span><br><span class="line">               .group(boosGroup, workerGroup)</span><br><span class="line">                // 设置channel类型为NIO类型</span><br><span class="line">               .channel(NioServerSocketChannel.class)</span><br><span class="line">               // 设置连接配置参数</span><br><span class="line">               .option(ChannelOption.SO_BACKLOG, 1024)</span><br><span class="line">               .childOption(ChannelOption.SO_KEEPALIVE, true)</span><br><span class="line">               .childOption(ChannelOption.TCP_NODELAY, true)</span><br><span class="line">               // 配置入站、出站事件handler</span><br><span class="line">               .childHandler(new ChannelInitializer&lt;NioSocketChannel&gt;() &#123;</span><br><span class="line">                   @Override</span><br><span class="line">                   protected void initChannel(NioSocketChannel ch) &#123;</span><br><span class="line">                       // 配置入站、出站事件channel</span><br><span class="line">                       ch.pipeline().addLast(...);</span><br><span class="line">                       ch.pipeline().addLast(...);</span><br><span class="line">                   &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">       // 绑定端口</span><br><span class="line">       int port = 8080;</span><br><span class="line">       serverBootstrap.bind(port).addListener(future -&gt; &#123;</span><br><span class="line">           if (future.isSuccess()) &#123;</span><br><span class="line">               System.out.println(new Date() + &quot;: 端口[&quot; + port + &quot;]绑定成功!&quot;);</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               System.err.println(&quot;端口[&quot; + port + &quot;]绑定失败!&quot;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="工作架构"><a href="#工作架构" class="headerlink" title="工作架构"></a>工作架构</h3><p><img src="/5.png" alt="img"></p>
+<p>server端包含1个Boss NioEventLoopGroup和1个Worker NioEventLoopGroup，NioEventLoopGroup相当于1个事件循环组，这个组里包含多个事件循环NioEventLoop，每个NioEventLoop包含1个selector和1个事件循环线程。</p>
+<p>每个Boss NioEventLoop循环执行的任务包含3步：</p>
+<ol>
+<li>轮询accept事件</li>
+<li>处理accept I/O事件，与Client建立连接，生成NioSocketChannel，并将NioSocketChannel注册到某个Worker NioEventLoop的Selector上</li>
+<li>处理任务队列中的任务，runAllTasks。任务队列中的任务包括用户调用eventloop.execute或schedule执行的任务，或者其它线程提交到该eventloop的任务。</li>
+</ol>
+<p>每个Worker NioEventLoop循环执行的任务包含3步：</p>
+<ol>
+<li>轮询read、write事件；</li>
+<li>处I/O事件，即read、write事件，在NioSocketChannel可读、可写事件发生时进行处理</li>
+<li>处理任务队列中的任务，runAllTasks。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/java后端/Mybatis/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/21/java后端/Redis/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李楚豪的博客</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK原生API问题"><span class="nav-number">1.</span> <span class="nav-text">JDK原生API问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO模型"><span class="nav-number">2.</span> <span class="nav-text">IO模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Netty使用的IO模型"><span class="nav-number">2.1.</span> <span class="nav-text">Netty使用的IO模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reactor线程模型"><span class="nav-number">3.</span> <span class="nav-text">Reactor线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能特性"><span class="nav-number">4.</span> <span class="nav-text">功能特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块"><span class="nav-number">5.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bootstrap、ServerBootstrap"><span class="nav-number">5.1.</span> <span class="nav-text">Bootstrap、ServerBootstrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Channel"><span class="nav-number">5.2.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Selector"><span class="nav-number">5.3.</span> <span class="nav-text">Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NioEventLoop"><span class="nav-number">5.4.</span> <span class="nav-text">NioEventLoop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NioEventLoopGroup"><span class="nav-number">5.5.</span> <span class="nav-text">NioEventLoopGroup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelHandler"><span class="nav-number">5.6.</span> <span class="nav-text">ChannelHandler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelHandlerContext"><span class="nav-number">5.7.</span> <span class="nav-text">ChannelHandlerContext</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelPipline"><span class="nav-number">5.8.</span> <span class="nav-text">ChannelPipline</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器启动代码"><span class="nav-number">6.</span> <span class="nav-text">服务器启动代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作架构"><span class="nav-number">7.</span> <span class="nav-text">工作架构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李楚豪的博客</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
