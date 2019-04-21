@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: userresponse: user  通过用户名（nickname）查找用户： url: /name param">
+<meta name="description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: Integer idresponse: user  通过用户名（nickname）查找用户： url: /name">
 <meta name="keywords" content="web开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="毕业设计API">
 <meta property="og:url" content="http://yoursite.com/2019/04/20/毕业设计API/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: userresponse: user  通过用户名（nickname）查找用户： url: /name param">
+<meta property="og:description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: Integer idresponse: user  通过用户名（nickname）查找用户： url: /name">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-20T16:12:24.215Z">
+<meta property="og:updated_time" content="2019-04-21T07:28:15.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="毕业设计API">
-<meta name="twitter:description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: userresponse: user  通过用户名（nickname）查找用户： url: /name param">
+<meta name="twitter:description" content="IP+端口：127.0.0.1:8080context-path: /gameshop test: ../hello 用户 /user User Integer UID String email String nickname   通过ID查找用户：url：/idparameter: Integer idresponse: user  通过用户名（nickname）查找用户： url: /name">
 
 
 
@@ -309,11 +309,11 @@
 <li>String nickname</li>
 </ul>
 </li>
-<li><p>通过ID查找用户：<br>url：/id<br>parameter: user<br>response: user</p>
+<li><p>通过ID查找用户：<br>url：/id<br>parameter: Integer id<br>response: user</p>
 </li>
 <li><p>通过用户名（nickname）查找用户：</p>
 <p>url: /name</p>
-<p>parameter: user</p>
+<p>parameter:String name</p>
 <p>response: user</p>
 </li>
 <li><p>注册：<br>url: /register<br>parameter: user<br>response：success</p>
@@ -395,12 +395,12 @@
 </li>
 <li><p>查询用户的所有订单<br>url: /list<br>parameter: Interger UID<br>response：repositories</p>
 </li>
-<li><p>查询库存</p>
+<li><p>查询游戏的库存情况，返回所有没有被使用的库存</p>
 <p>url: /query</p>
 <p>parameter； Integer GID</p>
 <p>response: repositories</p>
 </li>
-<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Game<br>response：success</p>
+<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Repository<br>response：success</p>
 </li>
 <li><p>还原订单</p>
 <p>url: /remake</p>

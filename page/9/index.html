@@ -738,11 +738,11 @@
 <li>String nickname</li>
 </ul>
 </li>
-<li><p>通过ID查找用户：<br>url：/id<br>parameter: user<br>response: user</p>
+<li><p>通过ID查找用户：<br>url：/id<br>parameter: Integer id<br>response: user</p>
 </li>
 <li><p>通过用户名（nickname）查找用户：</p>
 <p>url: /name</p>
-<p>parameter: user</p>
+<p>parameter:String name</p>
 <p>response: user</p>
 </li>
 <li><p>注册：<br>url: /register<br>parameter: user<br>response：success</p>
@@ -824,12 +824,12 @@
 </li>
 <li><p>查询用户的所有订单<br>url: /list<br>parameter: Interger UID<br>response：repositories</p>
 </li>
-<li><p>查询库存</p>
+<li><p>查询游戏的库存情况，返回所有没有被使用的库存</p>
 <p>url: /query</p>
 <p>parameter； Integer GID</p>
 <p>response: repositories</p>
 </li>
-<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Game<br>response：success</p>
+<li><p>购买（添加订单，修改库存）<br>url: /buy<br>parameter: Repository<br>response：success</p>
 </li>
 <li><p>还原订单</p>
 <p>url: /remake</p>
